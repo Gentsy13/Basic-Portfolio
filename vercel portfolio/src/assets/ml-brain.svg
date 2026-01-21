@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Brain Outline -->
+  <path d="M 100 40 Q 70 40 60 60 Q 50 70 55 85 Q 50 95 55 110 Q 55 130 70 140 Q 80 145 100 145 Q 120 145 130 140 Q 145 130 145 110 Q 150 95 145 85 Q 150 70 140 60 Q 130 40 100 40 Z" fill="url(#brainGrad)" stroke="#fff" stroke-width="3"/>
+  <!-- Brain Details -->
+  <path d="M 75 60 Q 70 70 75 80" stroke="#fff" stroke-width="2" fill="none"/>
+  <path d="M 85 55 Q 80 65 82 75" stroke="#fff" stroke-width="2" fill="none"/>
+  <path d="M 100 50 Q 95 60 98 72" stroke="#fff" stroke-width="2" fill="none"/>
+  <path d="M 115 55 Q 118 65 118 75" stroke="#fff" stroke-width="2" fill="none"/>
+  <path d="M 125 60 Q 130 70 125 80" stroke="#fff" stroke-width="2" fill="none"/>
+  <!-- Left Hemisphere -->
+  <path d="M 70 90 Q 65 100 70 110" stroke="#fff" stroke-width="2" fill="none"/>
+  <path d="M 80 95 Q 78 105 82 115" stroke="#fff" stroke-width="2" fill="none"/>
+  <path d="M 90 100 Q 88 110 92 120" stroke="#fff" stroke-width="2" fill="none"/>
+  <!-- Right Hemisphere -->
+  <path d="M 110 100 Q 112 110 108 120" stroke="#fff" stroke-width="2" fill="none"/>
+  <path d="M 120 95 Q 122 105 118 115" stroke="#fff" stroke-width="2" fill="none"/>
+  <path d="M 130 90 Q 135 100 130 110" stroke="#fff" stroke-width="2" fill="none"/>
+  <!-- Neural Network Nodes -->
+  <circle cx="75" cy="70" r="3" fill="#ffd700"/>
+  <circle cx="100" cy="65" r="3" fill="#ffd700"/>
+  <circle cx="125" cy="70" r="3" fill="#ffd700"/>
+  <circle cx="80" cy="105" r="3" fill="#ffd700"/>
+  <circle cx="100" cy="110" r="3" fill="#ffd700"/>
+  <circle cx="120" cy="105" r="3" fill="#ffd700"/>
+  <!-- Neural Connections -->
+  <line x1="75" y1="70" x2="100" y2="65" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="65" x2="125" y2="70" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+  <line x1="75" y1="70" x2="80" y2="105" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="65" x2="100" y2="110" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+  <line x1="125" y1="70" x2="120" y2="105" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+  <line x1="80" y1="105" x2="100" y2="110" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+  <line x1="100" y1="110" x2="120" y2="105" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+</svg>

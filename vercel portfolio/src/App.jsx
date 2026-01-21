@@ -1,5 +1,8 @@
 import './App.css'
 import profileImage from './assets/profile.jpg'
+import aiChatIcon from './assets/ai-chat.svg'
+import ecommerceIcon from './assets/ecommerce.svg'
+import mlBrainIcon from './assets/ml-brain.svg'
 import { useState } from 'react'
 
 function App() {
@@ -11,7 +14,7 @@ function App() {
       title: 'AI Chat Application',
       description: 'An intelligent chatbot application powered by natural language processing (NLP) that enables real-time conversations with context understanding. The system uses advanced machine learning algorithms to process user inputs and generate human-like responses. Features include multi-turn conversation handling, sentiment analysis, and intent recognition. Built with a scalable architecture to handle multiple concurrent users.',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      icon: '🤖',
+      icon: aiChatIcon,
       technologies: ['Python', 'TensorFlow', 'React', 'Flask', 'NLP']
     },
     {
@@ -19,7 +22,7 @@ function App() {
       title: 'E-Commerce Mobile App',
       description: 'A comprehensive mobile e-commerce platform featuring seamless payment integration, advanced product filtering, and secure user authentication. The app provides a smooth shopping experience with real-time inventory updates, personalized recommendations, and order tracking. Includes features like wishlist management, cart persistence, and push notifications for order updates and special offers.',
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      icon: '📱',
+      icon: ecommerceIcon,
       technologies: ['React Native', 'Firebase', 'Node.js', 'Stripe API', 'Redux']
     },
     {
@@ -27,7 +30,7 @@ function App() {
       title: 'ML Image Recognition',
       description: 'A sophisticated machine learning model designed for image classification achieving 95% accuracy using convolutional neural networks (CNNs). The system can identify and categorize objects in images with high precision. Features include real-time image processing, batch classification, and model retraining capabilities. Utilizes transfer learning techniques and data augmentation for improved performance.',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      icon: '🧠',
+      icon: mlBrainIcon,
       technologies: ['Python', 'OpenCV', 'PyTorch', 'NumPy', 'Scikit-learn']
     }
   ];
@@ -47,14 +50,12 @@ function App() {
         <div className="nav-logo">PORTFOLIO</div>
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
-          <li><a href="#collection">Collection</a></li>
-          <li><a href="#products">Products</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
       </nav>
 
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" id="home">
         <div className="hero-container">
           <div className="hero-content">
             <h1>
@@ -62,8 +63,12 @@ function App() {
             </h1>
             <p>3rd Year Computer Science Student. Passionate about building responsive web applications, solving complex problems, and creating seamless user experiences. Specialized in modern web technologies and full-stack development.</p>
             <div className="hero-buttons">
-              <button className="btn btn-primary">View Projects</button>
-              <button className="btn btn-secondary">Contact Me</button>
+              <a href="#projects" style={{textDecoration: 'none'}}>
+                <button className="btn btn-primary">View Projects</button>
+              </a>
+              <a href="#contact" style={{textDecoration: 'none'}}>
+                <button className="btn btn-secondary">Contact Me</button>
+              </a>
             </div>
           </div>
           <div className="hero-image">
@@ -110,7 +115,7 @@ function App() {
       </section>
 
       {/* View Projects Section */}
-      <section className="recent-nft">
+      <section className="recent-nft" id="projects">
         <h2 className="section-title">View <span>Projects</span></h2>
         <p className="section-subtitle">Featured Work - Click a card to learn more</p>
         
@@ -123,8 +128,10 @@ function App() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '60px'
-            }}>{projects[0].icon}</div>
+              padding: '30px'
+            }}>
+              <img src={projects[0].icon} alt={projects[0].title} style={{width: '120px', height: '120px'}} />
+            </div>
             <div className="nft-card-content">
               <div className="nft-card-title">{projects[0].title}</div>
               <p style={{color: '#999', fontSize: '11px', marginBottom: '8px'}}>Click to view details</p>
@@ -144,8 +151,10 @@ function App() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '60px'
-            }}>{projects[1].icon}</div>
+              padding: '30px'
+            }}>
+              <img src={projects[1].icon} alt={projects[1].title} style={{width: '120px', height: '120px'}} />
+            </div>
             <div className="nft-card-content">
               <div className="nft-card-title">{projects[1].title}</div>
               <p style={{color: '#999', fontSize: '11px', marginBottom: '8px'}}>Click to view details</p>
@@ -165,8 +174,10 @@ function App() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '60px'
-            }}>{projects[2].icon}</div>
+              padding: '30px'
+            }}>
+              <img src={projects[2].icon} alt={projects[2].title} style={{width: '120px', height: '120px'}} />
+            </div>
             <div className="nft-card-content">
               <div className="nft-card-title">{projects[2].title}</div>
               <p style={{color: '#999', fontSize: '11px', marginBottom: '8px'}}>Click to view details</p>
@@ -196,10 +207,12 @@ function App() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '80px',
                 borderRadius: '8px',
-                marginBottom: '20px'
-              }}>{selectedProject.icon}</div>
+                marginBottom: '20px',
+                padding: '40px'
+              }}>
+                <img src={selectedProject.icon} alt={selectedProject.title} style={{width: '160px', height: '160px'}} />
+              </div>
               
               <p className="modal-description">{selectedProject.description}</p>
               
@@ -214,97 +227,101 @@ function App() {
         </div>
       )}
 
-      {/* Contribution Section */}
-      <section className="contribution">
-        <div className="contribution-container">
-          <div className="contribution-image">
-            <div style={{
-              width: '250px',
-              height: '350px',
-              background: 'radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0.9) 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: '10px',
-              position: 'relative'
-            }}>
-              <div style={{
-                fontSize: '100px',
-                color: '#d4af37',
-                opacity: 0.7
-              }}>🗿</div>
+      {/* Currently Learning Section */}
+      <section className="learning-section" id="learning">
+        <h2 className="section-title">Currently <span>Learning</span></h2>
+        <p className="section-subtitle">Upcoming Technologies & Skills</p>
+        
+        <div className="learning-grid">
+          <div className="learning-card">
+            <div className="learning-icon">🚀</div>
+            <h3>Next.js 15</h3>
+            <p>Advanced React framework for production-grade applications</p>
+          </div>
+          
+          <div className="learning-card">
+            <div className="learning-icon">🐳</div>
+            <h3>Docker & Kubernetes</h3>
+            <p>Container orchestration and deployment automation</p>
+          </div>
+          
+          <div className="learning-card">
+            <div className="learning-icon">⚡</div>
+            <h3>GraphQL</h3>
+            <p>Modern API query language and runtime</p>
+          </div>
+          
+          <div className="learning-card">
+            <div className="learning-icon">🔷</div>
+            <h3>TypeScript</h3>
+            <p>Strongly typed JavaScript for better development</p>
+          </div>
+          
+          <div className="learning-card">
+            <div className="learning-icon">☁️</div>
+            <h3>AWS Cloud</h3>
+            <p>Amazon Web Services cloud computing platform</p>
+          </div>
+          
+          <div className="learning-card">
+            <div className="learning-icon">🧪</div>
+            <h3>Jest & Testing</h3>
+            <p>Unit testing and test-driven development</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="future-projects-section" id="contact">
+        <h2 className="section-title">Get In <span>Touch</span></h2>
+        <p className="section-subtitle">Let's work together on your next project</p>
+        
+        <div className="contact-container">
+          <div className="contact-info">
+            <div className="contact-item">
+              <div className="contact-icon">📧</div>
+              <h3>Email</h3>
+              <a href="mailto:aj.lomocso@urios.edu.ph">aj.lomocso@urios.edu.ph</a>
+            </div>
+            
+            <div className="contact-item">
+              <div className="contact-icon">🐙</div>
+              <h3>GitHub</h3>
+              <a href="https://github.com/gentsy13" target="_blank" rel="noopener noreferrer">github.com/gentsy13</a>
+            </div>
+            
+            <div className="contact-item">
+              <div className="contact-icon">📱</div>
+              <h3>Phone</h3>
+              <a href="tel:+639662144598">+63 966 214 4598</a>
             </div>
           </div>
-          <div className="contribution-content">
-            <h2>Contribution <span>3D Greek Statue Pack</span></h2>
-            <p>Over 200 Greek style sculpture</p>
-            <button className="btn btn-primary">View More</button>
+          
+          <div className="contact-form-wrapper">
+            <form className="contact-form">
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+              </div>
+              
+              <button type="submit" className="btn btn-primary submit-btn">Send Message</button>
+            </form>
           </div>
-        </div>
-      </section>
-
-      {/* Product Section */}
-      <section className="product-section">
-        <h2>
-          <span>3D Greek Statue Pack</span><br />
-          Over 200 Greek style<br />
-          sculpture
-        </h2>
-        
-        <div className="product-grid">
-          <div className="product-card">
-            <div style={{
-              width: '100%',
-              height: '100%',
-              background: 'radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '60px'
-            }}>🗿</div>
-            <div className="product-card-label">Statue Avatar 1</div>
-          </div>
-
-          <div className="product-card">
-            <div style={{
-              width: '100%',
-              height: '100%',
-              background: 'radial-gradient(circle, rgba(192, 160, 128, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '60px'
-            }}>🗿</div>
-            <div className="product-card-label">Statue Avatar 2</div>
-          </div>
-
-          <div className="product-card">
-            <div style={{
-              width: '100%',
-              height: '100%',
-              background: 'radial-gradient(circle, rgba(155, 139, 126, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '60px'
-            }}>🗿</div>
-            <div className="product-card-label">Statue Avatar 3</div>
-          </div>
-        </div>
-
-        <button className="btn btn-primary view-all-btn">View All</button>
-      </section>
-
-      {/* Connect Section */}
-      <section className="connect-section">
-        <h3>Let's Connect</h3>
-        <p>Get in touch for collaborations or just a friendly hello</p>
-        <div className="social-links">
-          <a href="#" className="social-icon">f</a>
-          <a href="#" className="social-icon">in</a>
-          <a href="#" className="social-icon">tw</a>
-          <a href="#" className="social-icon">ig</a>
-          <a href="#" className="social-icon">📧</a>
         </div>
       </section>
     </>
