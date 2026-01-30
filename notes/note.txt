@@ -1,0 +1,2 @@
+// Code blocks to remember
+npm create vite@latest

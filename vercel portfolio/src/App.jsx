@@ -4,9 +4,12 @@ import aiChatIcon from './assets/ai-chat.svg'
 import ecommerceIcon from './assets/ecommerce.svg'
 import mlBrainIcon from './assets/ml-brain.svg'
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [formStatus, setFormStatus] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const projects = [
     {
@@ -41,6 +44,44 @@ function App() {
 
   const closeModal = () => {
     setSelectedProject(null);
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus({ type: '', message: '' });
+
+    // EmailJS configuration
+    const serviceId = 'service_7kmlvux';
+    const templateId = 'template_0vj2ywr';
+    const publicKey = 'LEUk-rHxD4i7YFgRk';
+
+    const templateParams = {
+      from_name: e.target.name.value,
+      from_email: e.target.email.value,
+      subject: e.target.subject.value,
+      message: e.target.message.value,
+      to_email: 'ajlomocsool@gmail.com'
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        setFormStatus({
+          type: 'success',
+          message: 'Message sent successfully! I\'ll get back to you soon.'
+        });
+        e.target.reset(); // Reset form fields
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+        setFormStatus({
+          type: 'error',
+          message: 'Failed to send message. Please try again or email me directly.'
+        });
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -281,7 +322,7 @@ function App() {
             <div className="contact-item">
               <div className="contact-icon">📧</div>
               <h3>Email</h3>
-              <a href="mailto:aj.lomocso@urios.edu.ph">aj.lomocso@urios.edu.ph</a>
+              <a href="mailto:ajlomocsool@gmail.com">ajlomocsool@gmail.com</a>
             </div>
             
             <div className="contact-item">
@@ -298,7 +339,7 @@ function App() {
           </div>
           
           <div className="contact-form-wrapper">
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={sendEmail}>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required />
@@ -319,7 +360,15 @@ function App() {
                 <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
               </div>
               
-              <button type="submit" className="btn btn-primary submit-btn">Send Message</button>
+              {formStatus.message && (
+                <div className={`form-status ${formStatus.type}`}>
+                  {formStatus.message}
+                </div>
+              )}
+              
+              <button type="submit" className="btn btn-primary submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
             </form>
           </div>
         </div>
